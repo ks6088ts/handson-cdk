@@ -1,10 +1,17 @@
 {
+  "license": "MIT",
   "name": "handson-cdk",
   "version": "0.1.0",
   "bin": {
     "handson-cdk": "bin/handson-cdk.js"
   },
   "scripts": {
+    "fix": "run-s fix:prettier fix:eslint",
+    "fix:prettier": "prettier --write bin lib test",
+    "fix:eslint": "eslint bin lib test --ext .ts --fix",
+    "lint": "run-p lint:prettier lint:eslint",
+    "lint:prettier": "prettier --check bin lib test",
+    "lint:eslint": "eslint bin lib test --ext .ts",
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
