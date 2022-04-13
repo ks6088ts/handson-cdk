@@ -1,3 +1,5 @@
+[![test](https://github.com/ks6088ts/handson-cdk/workflows/test/badge.svg)](https://github.com/ks6088ts/handson-cdk/actions/workflows/test.yml)
+
 # Welcome to your CDK TypeScript project!
 
 This is a blank project for TypeScript development with CDK.
