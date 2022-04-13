@@ -2,6 +2,7 @@
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { HandsonCdkStack } from '../lib/handson-cdk-stack';
+import { HandsonEc2Stack } from '../lib/handson-ec2-stack';
 
 const app = new cdk.App();
 new HandsonCdkStack(app, 'HandsonCdkStack', {
@@ -15,4 +16,9 @@ new HandsonCdkStack(app, 'HandsonCdkStack', {
    * want to deploy the stack to. */
   // env: { account: '123456789012', region: 'us-east-1' },
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
+});
+
+const ec2KeyPairName = app.node.tryGetContext('ec2KeyPairName');
+new HandsonEc2Stack(app, 'HandsonEc2Stack', {
+  ec2KeyPairName: ec2KeyPairName,
 });
