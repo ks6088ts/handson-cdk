@@ -3,6 +3,7 @@ import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { HandsonCdkStack } from '../lib/handson-cdk-stack';
 import { HandsonEc2Stack } from '../lib/handson-ec2-stack';
+import { HandsonEcsStack } from '../lib/handson-ecs-stack';
 
 const projectPrefix = 'HANDSON-CDK';
 const app = new cdk.App();
@@ -50,4 +51,9 @@ new HandsonCdkStack(app, `${projectPrefix}-HandsonCdkStack`, {
 new HandsonEc2Stack(app, `${projectPrefix}-HandsonEc2Stack`, {
   env: getProcEnv(),
   ec2KeyPairName: envVals['ec2KeyPairName'],
+});
+
+new HandsonEcsStack(app, `${projectPrefix}-HandsonEcsStack`, {
+  env: getProcEnv(),
+  containerImageName: envVals['containerImageName'],
 });
