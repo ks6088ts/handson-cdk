@@ -15,7 +15,29 @@
     ]
   },
   "context": {
-    "ec2KeyPairName": "cdk-keypair",
+    "dev": {
+      "description": "Context samples for Dev",
+      "envName": "Development",
+      "ec2KeyPairName": "dev-keypair"
+    },
+    "stage": {
+      "description": "Context samples for Staging",
+      "env": {
+        "account": "111111111111",
+        "region": "ap-northeast-1"
+      },
+      "envName": "Staging",
+      "ec2KeyPairName": "stage-keypair"
+    },
+    "prod": {
+      "description": "Context samples for Production",
+      "env": {
+        "account": "111111111111",
+        "region": "ap-northeast-1"
+      },
+      "envName": "Production",
+      "ec2KeyPairName": "prod-keypair"
+    },
 
     "@aws-cdk/aws-apigateway:usagePlanKeyOrderInsensitiveId": true,
     "@aws-cdk/core:stackRelativeExports": true,

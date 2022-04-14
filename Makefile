@@ -1,3 +1,5 @@
+ENVIRONMENT ?= dev
+
 .PHONY: help
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -27,6 +29,7 @@ test: ## test codes
 .PHONY: synth
 synth: ## synth
 	yarn run cdk synth \
+		--context environment=$(ENVIRONMENT) \
 		--path-metadata false \
 		--version-reporting false
 
@@ -35,4 +38,10 @@ ci-test: install-deps lint build test synth ## ci test
 
 .PHONY: deploy
 deploy: ## deploy all the stacks
-	yarn run cdk deploy --all
+	yarn run cdk deploy --all \
+		--context environment=$(ENVIRONMENT)
+
+.PHONY: destroy
+destroy: ## destroy all the stacks
+	yarn run cdk destroy --all \
+		--context environment=$(ENVIRONMENT)
