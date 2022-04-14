@@ -50,10 +50,10 @@ new HandsonCdkStack(app, `${projectPrefix}-HandsonCdkStack`, {
 
 new HandsonEc2Stack(app, `${projectPrefix}-HandsonEc2Stack`, {
   env: getProcEnv(),
-  ec2KeyPairName: envVals['ec2KeyPairName'],
+  ec2KeyPairName: envVals['ec2Stack']['ec2KeyPairName'],
 });
 
 new HandsonEcsStack(app, `${projectPrefix}-HandsonEcsStack`, {
   env: getProcEnv(),
-  containerImageName: envVals['containerImageName'],
+  containerImageName: envVals['ecsStack']['containerImageName'],
 });
