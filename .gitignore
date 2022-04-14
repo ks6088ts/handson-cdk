@@ -9,3 +9,5 @@ cdk.out
 
 # Project
 !.eslintrc.js
+cdk.context.json
+*.pem
