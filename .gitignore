@@ -11,3 +11,4 @@ cdk.out
 !.eslintrc.js
 cdk.context.json
 *.pem
+scripts/run_task.py

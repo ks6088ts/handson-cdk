@@ -18,7 +18,12 @@
     "dev": {
       "description": "Context samples for Dev",
       "envName": "Development",
-      "ec2KeyPairName": "dev-keypair"
+      "ec2Stack": {
+        "ec2KeyPairName": "dev-keypair"
+      },
+      "ecsStack": {
+        "containerImageName": "tomomano/qabot:latest"
+      }
     },
     "stage": {
       "description": "Context samples for Staging",
@@ -27,7 +32,12 @@
         "region": "ap-northeast-1"
       },
       "envName": "Staging",
-      "ec2KeyPairName": "stage-keypair"
+      "ec2Stack": {
+        "ec2KeyPairName": "stage-keypair"
+      },
+      "ecsStack": {
+        "containerImageName": "tomomano/qabot:latest"
+      }
     },
     "prod": {
       "description": "Context samples for Production",
@@ -36,7 +46,12 @@
         "region": "ap-northeast-1"
       },
       "envName": "Production",
-      "ec2KeyPairName": "prod-keypair"
+      "ec2Stack": {
+        "ec2KeyPairName": "prod-keypair"
+      },
+      "ecsStack": {
+        "containerImageName": "tomomano/qabot:latest"
+      }
     },
 
     "@aws-cdk/aws-apigateway:usagePlanKeyOrderInsensitiveId": true,
