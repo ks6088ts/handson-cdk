@@ -4,8 +4,6 @@
 
 ```bash
 export AWS_PROFILE=your-dev
-export CDK_DEFAULT_ACCOUNT=your-aws-organization-jp
-export CDK_DEFAULT_REGION=ap-northeast-1
 
 # deploy a stack
 yarn run cdk deploy HANDSON-CDK-HandsonEcsStack \
@@ -29,5 +27,4 @@ yarn run cdk destroy HANDSON-CDK-HandsonEcsStack \
 
 ## Reference
 
-- [EC2 Instance Creation with CDK](https://github.com/aws-samples/aws-cdk-examples/blob/master/typescript/ec2-instance/README.md)
-- EC2 SSH keypair: [Deploy a Web Application on Amazon EC2](https://aws.amazon.com/getting-started/guides/deploy-webapp-ec2/module-one/?nc1=h_ls)
+- [Hands-on #3: Creating a Transformer-based Q&A bot system](https://github.com/tomomano/learn-aws-by-coding/blob/main/handson/qa-bot/README.md)
