@@ -4,8 +4,6 @@
 
 ```bash
 export AWS_PROFILE=your-dev
-export CDK_DEFAULT_ACCOUNT=your-aws-organization-jp
-export CDK_DEFAULT_REGION=ap-northeast-1
 
 # deploy a stack
 yarn run cdk deploy HANDSON-CDK-HandsonEc2Stack \

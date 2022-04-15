@@ -23,6 +23,9 @@
       },
       "ecsStack": {
         "containerImageName": "tomomano/qabot:latest"
+      },
+      "staticSiteStack": {
+        "path": "./assets/static_site"
       }
     },
     "stage": {
@@ -37,6 +40,9 @@
       },
       "ecsStack": {
         "containerImageName": "tomomano/qabot:latest"
+      },
+      "staticSiteStack": {
+        "path": "./assets/static_site"
       }
     },
     "prod": {
@@ -51,6 +57,9 @@
       },
       "ecsStack": {
         "containerImageName": "tomomano/qabot:latest"
+      },
+      "staticSiteStack": {
+        "path": "./assets/static_site"
       }
     },
 

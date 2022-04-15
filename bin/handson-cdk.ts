@@ -4,6 +4,7 @@ import * as cdk from 'aws-cdk-lib';
 import { HandsonCdkStack } from '../lib/handson-cdk-stack';
 import { HandsonEc2Stack } from '../lib/handson-ec2-stack';
 import { HandsonEcsStack } from '../lib/handson-ecs-stack';
+import { StaticSiteStack } from '../lib/static-site-stack';
 
 const projectPrefix = 'HANDSON-CDK';
 const app = new cdk.App();
@@ -56,4 +57,9 @@ new HandsonEc2Stack(app, `${projectPrefix}-HandsonEc2Stack`, {
 new HandsonEcsStack(app, `${projectPrefix}-HandsonEcsStack`, {
   env: getProcEnv(),
   containerImageName: envVals['ecsStack']['containerImageName'],
+});
+
+new StaticSiteStack(app, `${projectPrefix}-StaticSiteStack`, {
+  env: getProcEnv(),
+  path: envVals['staticSiteStack']['path'],
 });
