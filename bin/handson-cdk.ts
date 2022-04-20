@@ -5,6 +5,7 @@ import { HandsonCdkStack } from '../lib/handson-cdk-stack';
 import { HandsonEc2Stack } from '../lib/handson-ec2-stack';
 import { HandsonEcsStack } from '../lib/handson-ecs-stack';
 import { StaticSiteStack } from '../lib/static-site-stack';
+import { LambdaCronStack } from '../lib/lambda-cron-stack';
 
 const projectPrefix = 'HANDSON-CDK';
 const app = new cdk.App();
@@ -62,4 +63,9 @@ new HandsonEcsStack(app, `${projectPrefix}-HandsonEcsStack`, {
 new StaticSiteStack(app, `${projectPrefix}-StaticSiteStack`, {
   env: getProcEnv(),
   path: envVals['staticSiteStack']['path'],
+});
+
+new LambdaCronStack(app, `${projectPrefix}-LambdaCronStack`, {
+  env: getProcEnv(),
+  scheduleExpression: envVals['lambdaCronStack']['scheduleExpression'],
 });
