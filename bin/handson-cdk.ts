@@ -6,6 +6,7 @@ import { HandsonEc2Stack } from '../lib/handson-ec2-stack';
 import { HandsonEcsStack } from '../lib/handson-ecs-stack';
 import { StaticSiteStack } from '../lib/static-site-stack';
 import { LambdaCronStack } from '../lib/lambda-cron-stack';
+import { ThreeTierStack } from '../lib/three-tier-stack';
 
 const projectPrefix = 'HANDSON-CDK';
 const app = new cdk.App();
@@ -46,26 +47,35 @@ function getProcEnv() {
   }
 }
 
+const env = getProcEnv();
+
 new HandsonCdkStack(app, `${projectPrefix}-HandsonCdkStack`, {
-  env: getProcEnv(),
+  env: env,
 });
 
 new HandsonEc2Stack(app, `${projectPrefix}-HandsonEc2Stack`, {
-  env: getProcEnv(),
+  env: env,
   ec2KeyPairName: envVals['ec2Stack']['ec2KeyPairName'],
 });
 
 new HandsonEcsStack(app, `${projectPrefix}-HandsonEcsStack`, {
-  env: getProcEnv(),
+  env: env,
   containerImageName: envVals['ecsStack']['containerImageName'],
 });
 
 new StaticSiteStack(app, `${projectPrefix}-StaticSiteStack`, {
-  env: getProcEnv(),
+  env: env,
   path: envVals['staticSiteStack']['path'],
 });
 
 new LambdaCronStack(app, `${projectPrefix}-LambdaCronStack`, {
-  env: getProcEnv(),
+  env: env,
   scheduleExpression: envVals['lambdaCronStack']['scheduleExpression'],
+});
+
+new ThreeTierStack(app, `${projectPrefix}-ThreeTierStack`, {
+  env: env,
+  prefix: envVals['threeTierStack']['prefix'],
+  cidr: envVals['threeTierStack']['cidr'],
+  dbUser: envVals['threeTierStack']['dbUser'],
 });

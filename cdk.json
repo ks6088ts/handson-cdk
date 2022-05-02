@@ -29,6 +29,11 @@
       },
       "lambdaCronStack": {
         "scheduleExpression": "cron(0 18 ? * MON-FRI *)"
+      },
+      "threeTierStack": {
+        "prefix": "handsonCdk",
+        "cidr": "10.0.0.0/16",
+        "dbUser": "admin"
       }
     },
     "stage": {
@@ -49,6 +54,11 @@
       },
       "lambdaCronStack": {
         "scheduleExpression": "cron(0 18 ? * MON-FRI *)"
+      },
+      "threeTierStack": {
+        "prefix": "handsonCdk",
+        "cidr": "10.0.0.0/16",
+        "dbUser": "admin"
       }
     },
     "prod": {
@@ -69,6 +79,11 @@
       },
       "lambdaCronStack": {
         "scheduleExpression": "cron(0 18 ? * MON-FRI *)"
+      },
+      "threeTierStack": {
+        "prefix": "handsonCdk",
+        "cidr": "10.0.0.0/16",
+        "dbUser": "admin"
       }
     },
 
