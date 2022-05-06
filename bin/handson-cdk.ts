@@ -7,6 +7,7 @@ import { HandsonEcsStack } from '../lib/handson-ecs-stack';
 import { StaticSiteStack } from '../lib/static-site-stack';
 import { LambdaCronStack } from '../lib/lambda-cron-stack';
 import { ThreeTierStack } from '../lib/three-tier-stack';
+import { IotCoreStack } from '../lib/iot-core-stack';
 
 const projectPrefix = 'HANDSON-CDK';
 const app = new cdk.App();
@@ -78,4 +79,10 @@ new ThreeTierStack(app, `${projectPrefix}-ThreeTierStack`, {
   prefix: envVals['threeTierStack']['prefix'],
   cidr: envVals['threeTierStack']['cidr'],
   dbUser: envVals['threeTierStack']['dbUser'],
+});
+
+new IotCoreStack(app, `${projectPrefix}-IotCoreStack`, {
+  env: env,
+  prefix: envVals['iotCoreStack']['prefix'],
+  certificateArn: envVals['iotCoreStack']['certificateArn'],
 });

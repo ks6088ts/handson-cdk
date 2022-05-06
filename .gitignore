@@ -12,3 +12,4 @@ cdk.out
 cdk.context.json
 *.pem
 scripts/run_task.py
+credentials
