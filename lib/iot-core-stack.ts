@@ -1,11 +1,14 @@
 import * as cdk from 'aws-cdk-lib';
 import * as iot from 'aws-cdk-lib/aws-iot';
+import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
+import * as iam from 'aws-cdk-lib/aws-iam';
 
 import { Construct } from 'constructs';
 
 export interface IotCoreStackProps extends cdk.StackProps {
   prefix: string;
   certificateArn: string;
+  sql: string;
 }
 
 export class IotCoreStack extends cdk.Stack {
@@ -49,5 +52,68 @@ export class IotCoreStack extends cdk.Stack {
       }
     );
     iotPolicyPrincipalAttachment.addDependsOn(iotPolicy);
+
+    const table = new dynamodb.Table(this, `${props.prefix}-table`, {
+      partitionKey: {
+        name: 'timestamp',
+        type: dynamodb.AttributeType.NUMBER,
+      },
+      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
+      tableName: `${props.prefix}-table`,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+    });
+
+    const tablePutItemRole = new iam.CfnRole(
+      this,
+      `${props.prefix}-table-put-item-role`,
+      {
+        assumeRolePolicyDocument: {
+          Statement: [
+            {
+              Action: 'sts:AssumeRole',
+              Effect: 'Allow',
+              Principal: {
+                Service: 'iot.amazonaws.com',
+              },
+            },
+          ],
+          Version: '2012-10-17',
+        },
+        policies: [
+          {
+            policyName: `${props.prefix}-table-put-item-policy`,
+            policyDocument: {
+              Version: '2012-10-17',
+              Statement: [
+                {
+                  Effect: 'Allow',
+                  Action: 'dynamoDB:PutItem',
+                  Resource: table.tableArn,
+                },
+              ],
+            },
+          },
+        ],
+      }
+    );
+
+    new iot.CfnTopicRule(this, `${props.prefix}-iot-topic-rule`, {
+      ruleName: `${props.prefix}_iot_topic_rule`,
+      topicRulePayload: {
+        actions: [
+          {
+            dynamoDBv2: {
+              putItem: {
+                tableName: table.tableName,
+              },
+              roleArn: tablePutItemRole.attrArn,
+            },
+          },
+        ],
+        awsIotSqlVersion: '2016-03-23',
+        ruleDisabled: false,
+        sql: props.sql,
+      },
+    });
   }
 }

@@ -37,7 +37,8 @@
       },
       "iotCoreStack": {
         "prefix": "handsonCdk",
-        "certificateArn": "arn:aws:iot:ap-northeast-1:0000:cert/0000"
+        "certificateArn": "arn:aws:iot:ap-northeast-1:0000:cert/0000",
+        "sql": "SELECT * FROM 'handson/test'"
       }
     },
     "stage": {
@@ -66,7 +67,8 @@
       },
       "iotCoreStack": {
         "prefix": "handsonCdk",
-        "certificateArn": "arn:aws:iot:ap-northeast-1:0000:cert/0000"
+        "certificateArn": "arn:aws:iot:ap-northeast-1:0000:cert/0000",
+        "sql": "SELECT * FROM 'handson/test'"
       }
     },
     "prod": {
@@ -95,7 +97,8 @@
       },
       "iotCoreStack": {
         "prefix": "handsonCdk",
-        "certificateArn": "arn:aws:iot:ap-northeast-1:0000:cert/0000"
+        "certificateArn": "arn:aws:iot:ap-northeast-1:0000:cert/0000",
+        "sql": "SELECT * FROM 'handson/test'"
       }
     },
 

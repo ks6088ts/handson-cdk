@@ -85,4 +85,5 @@ new IotCoreStack(app, `${projectPrefix}-IotCoreStack`, {
   env: env,
   prefix: envVals['iotCoreStack']['prefix'],
   certificateArn: envVals['iotCoreStack']['certificateArn'],
+  sql: envVals['iotCoreStack']['sql'],
 });
