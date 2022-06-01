@@ -8,6 +8,7 @@ import { StaticSiteStack } from '../lib/static-site-stack';
 import { LambdaCronStack } from '../lib/lambda-cron-stack';
 import { ThreeTierStack } from '../lib/three-tier-stack';
 import { IotCoreStack } from '../lib/iot-core-stack';
+import { Ec2SandboxStack } from '../lib/ec2-sandbox-stack';
 
 const projectPrefix = 'HANDSON-CDK';
 const app = new cdk.App();
@@ -86,4 +87,11 @@ new IotCoreStack(app, `${projectPrefix}-IotCoreStack`, {
   prefix: envVals['iotCoreStack']['prefix'],
   certificateArn: envVals['iotCoreStack']['certificateArn'],
   sql: envVals['iotCoreStack']['sql'],
+});
+
+new Ec2SandboxStack(app, `${projectPrefix}-Ec2SandboxStack`, {
+  env: env,
+  prefix: envVals['ec2SandboxStack']['prefix'],
+  cidr: envVals['ec2SandboxStack']['cidr'],
+  maxAzs: envVals['ec2SandboxStack']['maxAzs'],
 });

@@ -39,6 +39,11 @@
         "prefix": "handsonCdk",
         "certificateArn": "arn:aws:iot:ap-northeast-1:0000:cert/0000",
         "sql": "SELECT * FROM 'handson/test'"
+      },
+      "ec2SandboxStack": {
+        "prefix": "handsonCdk",
+        "cidr": "10.0.0.0/16",
+        "maxAzs": 1
       }
     },
     "stage": {
@@ -69,6 +74,11 @@
         "prefix": "handsonCdk",
         "certificateArn": "arn:aws:iot:ap-northeast-1:0000:cert/0000",
         "sql": "SELECT * FROM 'handson/test'"
+      },
+      "ec2SandboxStack": {
+        "prefix": "handsonCdk",
+        "cidr": "10.0.0.0/16",
+        "maxAzs": 1
       }
     },
     "prod": {
@@ -99,6 +109,11 @@
         "prefix": "handsonCdk",
         "certificateArn": "arn:aws:iot:ap-northeast-1:0000:cert/0000",
         "sql": "SELECT * FROM 'handson/test'"
+      },
+      "ec2SandboxStack": {
+        "prefix": "handsonCdk",
+        "cidr": "10.0.0.0/16",
+        "maxAzs": 1
       }
     },
 
